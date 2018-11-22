@@ -11,14 +11,15 @@ from utils.process_image import *
 
 # we run the algorithm on Caltech Pedestrian and Nexet Dataset
 # set the corresponding directory of the dataset here
-inDirectory = "Datasets/Nexet_1"
-outDirectory = inDirectory + "_out"
-if not os.path.exists(outDirectory):
-    os.makedirs(outDirectory)
-imageNames = os.listdir(inDirectory + "/")
+inDirectory = "Datasets/Caltech_Pedestrian"
+
 
 # Nexet dataset
 if(inDirectory == "Datasets/Nexet_1"):
+    outDirectory = inDirectory + "_out"
+    if not os.path.exists(outDirectory):
+        os.makedirs(outDirectory)
+    imageNames = os.listdir(inDirectory + "/")
 	for imageName in imageNames:
 	    if imageName == '.DS_Store':
 	        continue
@@ -28,7 +29,7 @@ if(inDirectory == "Datasets/Nexet_1"):
 	    out = process_image(image)
 	    mpimg.imsave(outDirectory + "/" + imageName, out)
 	#     print("Processed " + outDirectory + "/" + imageName)
-	print("Processing complete.")  
+	print("Processing complete.")
 
 
 # Caltech Pedestrian dataset
@@ -47,8 +48,7 @@ elif(inDirectory == "Datasets/Caltech_Pedestrian"):
 	'''NOTE: this function expects color images!!
 	this runs the function process_image over each frame of the video'''
 	white_clip = clip1.fl_image(process_image) 
-	print("Processing complete.")  
-	# %time white_clip.write_videofile(white_output, audio=False)
+	white_clip.write_videofile(white_output, audio=False)
 
 
 ''' Helper functions for seq file processing'''

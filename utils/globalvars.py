@@ -1,4 +1,4 @@
-print("Globals")
+# print("Globals")
 
 global avgLeft
 global avgRight

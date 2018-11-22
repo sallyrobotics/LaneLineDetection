@@ -77,12 +77,6 @@ def process_image(image):
     # Test detected edges by uncommenting this
     #return cv2.cvtColor(regionInterestImage, cv2.COLOR_GRAY2RGB)
 
-    # draw ROI on the image for visualization
-    cv2.line(image, (vertices[0][0], vertices[0][1]), (vertices[1][0], vertices[1][1]), [255,255,0], 10)
-    cv2.line(image, (vertices[1][0], vertices[1][1]), (vertices[2][0], vertices[2][1]), [255,255,0], 10)
-    cv2.line(image, (vertices[2][0], vertices[2][1]), (vertices[3][0], vertices[3][1]), [255,255,0], 10)
-    cv2.line(image, (vertices[3][0], vertices[3][1]), (vertices[0][0], vertices[0][1]), [255,255,0], 10)
-
     # draw output on top of original
     weightedImage =  weighted_img(lineMarkedImage, image)
 
