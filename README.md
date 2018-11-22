@@ -2,11 +2,10 @@
 
 <br/>
 This project tries to detect Lane lines on Road Images using Python and OpenCV. The algorithm works reasonably well for images with low brightness as well. 
-\
 
 
 The processing has been carried out using the Caltech Pedestrian and Nexet datasets. 
-\
+
 
 The code can be run using the following command:
 `python3 main.py`
