@@ -7,7 +7,8 @@ from utils.functions import *
 
 
 def squareROI(height, width):
-    
+    # A margin of 10 pixels is kept to prevent the borders of the image 
+    # being detected as an edge 
     return np.array ( [[
                     [width - 10, height / 2], 
                     [width - 10, height],
@@ -17,7 +18,8 @@ def squareROI(height, width):
 
 
 def trapeziumROI(height, width):
-
+    # A margin of 40 pixels is kept to prevent the borders of the image 
+    # being detected as an edge
     return np.array( [[
                 [3*width/4, 3*height/5],
                 [width/4, 3*height/5],
@@ -32,6 +34,15 @@ def process_image(image):
     # because sometimes the lane and road have same amount of luminance
     # grayscaleImage = grayscale(image)
 
+    # YCrCb conversion
+    # yImage = bgr_to_y(image)
+
+    # hsv conversion
+    # hsvImage = bgr_to_hsv(image)
+    
+    # hls conversion
+    # hlsImage = bgr_to_hls(image)
+    
     # applying LAB transform
     labImage = bgr_to_lab(image)
 
@@ -66,7 +77,7 @@ def process_image(image):
     # Test detected edges by uncommenting this
     #return cv2.cvtColor(regionInterestImage, cv2.COLOR_GRAY2RGB)
 
-    # draw ROI on the image
+    # draw ROI on the image for visualization
     cv2.line(image, (vertices[0][0], vertices[0][1]), (vertices[1][0], vertices[1][1]), [255,255,0], 10)
     cv2.line(image, (vertices[1][0], vertices[1][1]), (vertices[2][0], vertices[2][1]), [255,255,0], 10)
     cv2.line(image, (vertices[2][0], vertices[2][1]), (vertices[3][0], vertices[3][1]), [255,255,0], 10)
